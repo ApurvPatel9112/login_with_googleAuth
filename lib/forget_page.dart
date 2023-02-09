@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, use_key_in_widget_constructors, unused_field, unused_local_variable
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login/background.dart';
 import 'package:login/screens/log_in.dart';
@@ -135,11 +136,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Loginpage()));
+                                      if (Navigator.canPop(context)) {
+                                        Navigator.pop(context);
+                                      } else {
+                                        SystemNavigator.pop();
+                                      }
                                     },
                                     child: Text(
                                       'Login ?',

@@ -48,7 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
           body: SingleChildScrollView(
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              //height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/login_bk.png"),
@@ -206,41 +206,42 @@ class _RegisterPageState extends State<RegisterPage> {
                                       color: Colors.blue[300]),
                                   child: TextButton(
                                       onPressed: () async {
-                                        _formkey.currentState!.validate();
-
-                                        try {
-                                          final credential = await FirebaseAuth
-                                              .instance
-                                              .createUserWithEmailAndPassword(
-                                            email: _emailController.text,
-                                            password: _passwordController.text,
-                                          )
-                                              .then((value) async {
-                                            AwesomeDialog(
-                                              context: context,
-                                              dialogType: DialogType.success,
-                                              showCloseIcon: true,
-                                              desc: "Signup Successfully",
-                                            ).show();
-                                            await Future.delayed(
-                                                const Duration(seconds: 1));
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Loginpage()));
-                                          });
-                                        } on FirebaseAuthException catch (e) {
-                                          if (e.code == 'weak-password') {
-                                            print(
-                                                'The password provided is too weak.');
-                                          } else if (e.code ==
-                                              'email-already-in-use') {
-                                            print(
-                                                'The account already exists for that email.');
+                                        if (_formkey.currentState!.validate()) {
+                                          try {
+                                            final credential = await FirebaseAuth
+                                                .instance
+                                                .createUserWithEmailAndPassword(
+                                              email: _emailController.text,
+                                              password:
+                                                  _passwordController.text,
+                                            )
+                                                .then((value) async {
+                                              AwesomeDialog(
+                                                context: context,
+                                                dialogType: DialogType.success,
+                                                showCloseIcon: true,
+                                                desc: "Signup Successfully",
+                                              ).show();
+                                              await Future.delayed(
+                                                  const Duration(seconds: 1));
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Loginpage()));
+                                            });
+                                          } on FirebaseAuthException catch (e) {
+                                            if (e.code == 'weak-password') {
+                                              print(
+                                                  'The password provided is too weak.');
+                                            } else if (e.code ==
+                                                'email-already-in-use') {
+                                              print(
+                                                  'The account already exists for that email.');
+                                            }
+                                          } catch (e) {
+                                            print(e);
                                           }
-                                        } catch (e) {
-                                          print(e);
                                         }
                                       },
                                       child: Text(
