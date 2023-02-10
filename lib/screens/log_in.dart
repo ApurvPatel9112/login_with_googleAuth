@@ -7,9 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:login/auth_service.dart';
-import 'package:login/background.dart';
-import 'package:login/forget_page.dart';
-import 'package:login/home_page.dart';
+import 'package:login/screens/forget_page.dart';
+import 'package:login/screens/home_page.dart';
 import 'package:login/screens/register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

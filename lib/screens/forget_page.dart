@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:login/background.dart';
 import 'package:login/screens/log_in.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -134,6 +133,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
+                                  Text(
+                                    'Remember Password?',
+                                    style: TextStyle(fontSize: 12.sp),
+                                  ),
+                                  SizedBox(width: 2),
                                   InkWell(
                                     onTap: () {
                                       if (Navigator.canPop(context)) {
@@ -143,9 +147,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                       }
                                     },
                                     child: Text(
-                                      'Login ?',
+                                      'Login ',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 12.h),
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 13.sp),
                                     ),
                                   ),
                                 ],

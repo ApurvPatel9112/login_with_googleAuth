@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:login/auth_service.dart';
-import 'package:login/background.dart';
 import 'package:login/screens/log_in.dart';
 
 class RegisterPage extends StatefulWidget {
